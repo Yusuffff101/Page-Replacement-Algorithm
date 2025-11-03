@@ -1,0 +1,51 @@
+/* Custom styles */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tailwind applies its 'disabled' styles directly.
+  This is a fallback, but the @apply directive in the 
+  original <style> tag is the primary method.
+  Since @apply isn't valid in pure CSS, we'll
+  re-declare the styles Tailwind would have used.
+*/
+button:disabled {
+    background-color: #9ca3af; /* bg-gray-400 */
+    cursor: not-allowed;
+}
+
+/* Custom range slider */
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background-color: #d1d5db; /* bg-gray-300 */
+    border-radius: 9999px; /* rounded-full */
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #2563eb; /* bg-blue-600 */
+    border-radius: 9999px; /* rounded-full */
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: #2563eb; /* bg-blue-600 */
+    border-radius: 9999px; /* rounded-full */
+    cursor: pointer;
+    border: 0;
+}
