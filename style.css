@@ -1,51 +1,95 @@
-/* Custom styles */
+/* * This file contains the custom CSS for the Page Replacement Simulator.
+ * It works in conjunction with Tailwind CSS, which is loaded via CDN in index.html.
+ */
+
+/* * Use a clean, modern font stack and apply a subtle 
+ * gradient background to the entire page for visual depth. 
+ */
 body {
     font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background-color: #f4f7f6;
+    background-image: linear-gradient(180deg, #f8fafc 0%, #f4f7f6 100%);
 }
 
-/* Tailwind applies its 'disabled' styles directly.
-  This is a fallback, but the @apply directive in the 
-  original <style> tag is the primary method.
-  Since @apply isn't valid in pure CSS, we'll
-  re-declare the styles Tailwind would have used.
-*/
-button:disabled {
-    background-color: #9ca3af; /* bg-gray-400 */
-    cursor: not-allowed;
+/* * Style for the main container cards (shadow, border radius)
+ * This class is applied in the HTML to the main section blocks.
+ */
+.card {
+    @apply bg-white p-6 rounded-xl shadow-lg border border-gray-100;
 }
 
-/* Custom range slider */
-input[type=range] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 8px;
-    background-color: #d1d5db; /* bg-gray-300 */
-    border-radius: 9999px; /* rounded-full */
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    transition-property: opacity;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+/* * Adds a subtle "lift" effect to the statistic cards 
+ * on hover, making the UI feel more interactive.
+ */
+.stat-card {
+    @apply transition-transform duration-200 ease-in-out;
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: #2563eb; /* bg-blue-600 */
-    border-radius: 9999px; /* rounded-full */
-    cursor: pointer;
+.stat-card:hover {
+    @apply -translate-y-1 shadow-md;
 }
 
-input[type=range]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background-color: #2563eb; /* bg-blue-600 */
-    border-radius: 9999px; /* rounded-full */
-    cursor: pointer;
-    border: 0;
+/* * Custom styling for the <canvas> element.
+ * Ensures it has a border and rounded corners, matching the UI theme.
+ */
+#simulation-canvas {
+    @apply border-2 border-gray-200 rounded-lg bg-white;
 }
+
+/* * Custom styles for the slider "thumb" (the circle)
+ * This ensures it matches the blue theme of the application.
+ */
+input[type='range']::-webkit-slider-thumb {
+    @apply bg-blue-600;
+}
+
+input[type='range']::-moz-range-thumb {
+    @apply bg-blue-600;
+}
+
+/* * Enhanced Focus States for Accessibility and Polish
+ * Provides a clear, blue "glow" outline to interactive elements 
+ * when they are focused using the keyboard (Tab key) or clicked.
+ */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    @apply outline-none ring-4 ring-blue-600/30;
+}
+
+/* * Button Animation: Subtle pulse for the "Start Simulation" button
+ * This draws the user's attention to the primary action.
+ */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 8px 0px rgba(59, 130, 246, 0.3); /* blue-500 */
+  }
+  50% {
+    box-shadow: 0 0 16px 4px rgba(59, 130, 246, 0.5); /* blue-500 */
+  }
+}
+
+/* Apply the pulse only to the primary "start" button when it's enabled */
+#start-sim:not(:disabled) {
+    animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* * Custom Scrollbar for the Execution Log
+ * Makes the log's scrollbar match the site's aesthetic.
+ */
+#execution-log::-webkit-scrollbar {
+    width: 8px;
+}
+
+#execution-log::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+}
+
+#execution-log::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+}
+
+#execution-log::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}
+
