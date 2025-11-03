@@ -1,10 +1,3 @@
-/* * This file contains the custom CSS for the Page Replacement Simulator.
- * It works in conjunction with Tailwind CSS, which is loaded via CDN in index.html.
- */
-
-/* * Use a clean, modern font stack and apply a subtle 
- * gradient background to the entire page for visual depth. 
- */
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f4f7f6;
