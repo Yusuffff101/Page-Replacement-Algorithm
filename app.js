@@ -1,3 +1,13 @@
+/**
+ * This file contains the complete modular JavaScript code for the 
+ * OS Page Replacement Simulator.
+ * * It includes all classes required for the application to run:
+ * - PageReplacementSimulator: The main application class.
+ * - UIManager: Handles all DOM interactions.
+ * - SimulationLogic: Contains the pure algorithms (FIFO, LRU, Optimal).
+ * - Animator: Manages the simulation playback (play, pause, step).
+ * - Renderer: Handles all drawing on the HTML5 Canvas.
+ */
 // This variable will be used by the Renderer to show eviction animations.
 let lastStateFrames = [];
 
@@ -818,4 +828,3 @@ try {
         <pre>${e.message}</pre>
     </div>`;
 }
-
